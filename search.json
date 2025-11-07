@@ -49,6 +49,48 @@
     "text": "Lab 7: The Advanced Encryption Standard"
   },
   {
+    "objectID": "labs/lab6/lab6.html",
+    "href": "labs/lab6/lab6.html",
+    "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "section": "",
+    "text": "The goal of this design is to practice the functionality of MCU by interfacing a temperature sensor (DS1722) over an SPI link and building a webpage by interfacing ESP8266 over a UART link."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#introduction",
+    "href": "labs/lab6/lab6.html#introduction",
+    "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "section": "",
+    "text": "The goal of this design is to practice the functionality of MCU by interfacing a temperature sensor (DS1722) over an SPI link and building a webpage by interfacing ESP8266 over a UART link."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#design",
+    "href": "labs/lab6/lab6.html#design",
+    "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "section": "Design",
+    "text": "Design\nI used the starter code provided by the course for setting up most of the MCU. Referencing the STM32L432KC reference manual, programming manual, and datasheet, I was able to utilize functions to set up and enable the SPI. Specifically, port B was chosen as the pins for the SPI to avoid interfering with the UART pins in port A. To enable the SPI, I wrote the functions initSPI and spiSendReceive, which sets up the SPI following steps from the reference model and transmits a character over SPI while returning the received character, respectively.\nFunctions for the temperature sensor DS1722 was also written. According to the datasheet, the raw data stored in MSB and LSB was received by the SPI, and calculated to convert to a floating value of temperature. As per the design of the sensor, resolution from 8 to 12 bits can also be set through the initialization function.\nTo set up the ESP8266 web server, I simply modified the starter code provided as mentioned above, changing the looks of the webpage and adding functions related to the temperature sensors, such as buttons to control the resolution.\nThe circuitry design simply connects the desired pins of MCU to DS1722 and ESP8266. The schematics for the physical circuit design is shown in the following graph:\n\n\n\n\n\n\nFigure 1: Schematics of the circuit design"
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#testing-and-results",
+    "href": "labs/lab6/lab6.html#testing-and-results",
+    "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "section": "Testing and Results",
+    "text": "Testing and Results\nThe webpage can successfully run, lighting up and turning off LED when pressing the buttons, while updating temperature measured by the DS1722 whenever the page is refreshed. On top of that, the page also allows configuring the precision of the temperature sensor, also controlled by buttons. When touching the sensor, the measured temperature rise accordingly.\n\n\n\nWebpage running\n\n\nWhen verifying the SPI function with logic analyzer on oscilloscope, we have the following result:\n\n\n\nLogic Analyzer result of SPI transaction\n\n\nThis figure does not perfectly reflect the values that the SPI transaction receives, since there seem to be some glitches in the the clock measured by the oscilloscope. I suspect that this may be due calibration or some faults of the oscilloscope. However, when looking at the shape of the waveforms in general, the picture does show 16 clock cycles for each pulse of CE and also corresponding MOSI and MISO."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#conclusion",
+    "href": "labs/lab6/lab6.html#conclusion",
+    "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "section": "Conclusion",
+    "text": "Conclusion\nIn this lab, I successfully designed and built a MCU design that was able to correctly set up a webpage with USART and interface with a temperature sensor using SPI. As mentioned in previous sections, the webpage reflects the temperature when refreshed, configures the precision of the temperature sensor, and control a LED with button. Therefore, I believe that my design for this lab meets all the requirements of this lab. This week, I spent 10 hours on the lab. One issue that I spent the most time debugging was the logic analyzer, which I had not had much experience with."
+  },
+  {
+    "objectID": "labs/lab6/lab6.html#ai-prototype-summary",
+    "href": "labs/lab6/lab6.html#ai-prototype-summary",
+    "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "section": "AI Prototype Summary",
+    "text": "AI Prototype Summary\nFor this AI prototype, I used ChatGPT. When feeding the first prompt into it, it produced a well-looking website with cool designs. However, it was not really interfacing with the temperature sensor since the temperature were changing even when nothing was plugged into it.\n\n\n\nHTML webpage produced by ChatGPT\n\n\nAs for writing the SPI functions, ChatGPT did a fair job with initializing the SPI and also writing the code for transmitting data. However, it missed configuring the GPIO pins that would physically connect to the temperature sensor, so the design did not work."
+  },
+  {
     "objectID": "labs/lab4/lab4.html",
     "href": "labs/lab4/lab4.html",
     "title": "Lab 4: Digital Audio",
